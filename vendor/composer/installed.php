@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
-        'name' => 'mad/php-helper-code',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'name' => 'muhammad-abdullah-developer/php-helper-code',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '70260e0c8e72dbab63231ed4a9fe1524dd020db9',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'mad/php-helper-code' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+        'muhammad-abdullah-developer/php-helper-code' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '70260e0c8e72dbab63231ed4a9fe1524dd020db9',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
