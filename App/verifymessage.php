@@ -1,12 +1,15 @@
 <?php
 
-
-    
-include 'config.php';
+require "../vendor/autoload.php";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+// include 'config.php';
 session_start();
-require_once "PHPMailer/PHPMailerAutoload.php";
-$a = $_SESSION['user_name'];
-$b = $_SESSION['user_email'];
+// require_once "PHPMailer/PHPMailerAutoload.php";
+// $a = $_SESSION['user_name'];
+// $b = $_SESSION['user_email'];
+$a = "Muhammad abdullah";
+$b = "muhabd0336@gmail.com";
 
 
 //==Email Process===================
@@ -36,7 +39,7 @@ $b = $_SESSION['user_email'];
     $mail->isHTML(true);
     
     $mail->Subject = "Email Verification - Project";
-    $mail->Body = "<h1>$a</h1><p>It takes a Few seconds to verify <h1>$b</h1> Just click verify email link.</p> <a href='http://localhost/all/email_verify.php'>Verify Email</a>";
+    $mail->Body = require_once 'emailtemplate.php';
     
     $mail->AltBody = "This is the plain text version of the email content";
     $mail->send();		
