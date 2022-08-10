@@ -11,6 +11,12 @@
 
             try{
 
+                (new DotEnv('../.env'))->load();
+
+                $flash = new Flash();
+                $flash->create("reciever_email", $to, "info");
+                $flash->create("reciever_name", $toName, "info");
+                
                 $mail = new PHPMailer;
                 //Enable SMTP debugging. 
                 //$mail->SMTPDebug = 3;                               
@@ -27,7 +33,7 @@
                 if(getenv("REQUIRES_ENCRYPTION")){
                     $mail->SMTPSecure = getenv("SMTPSECURE");                           
                 }
-    
+                
                 //Set TCP port to connect to 
                 $mail->Port = getenv("PORT");                                   
                 
@@ -38,12 +44,15 @@
                 //$mail->AddCC($varEmail,'');
                 
                 $mail->isHTML(true);
-    
+                
                 $mail->Subject = $subject;
-                $mail->Body = require_once $emailTemplateAddress;
+
+    
+                $mail->Body = $emailTemplateAddress;
                 
                 $mail->AltBody = $altBody;
                 $mail->send();		
+
             }catch (Exception $e){
                 echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                 exit();

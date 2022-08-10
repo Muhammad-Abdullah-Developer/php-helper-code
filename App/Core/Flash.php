@@ -12,8 +12,9 @@
          * @param string $type
          * @return void
          */
-        public function create_flash_message(string $name, string $message, string $type): void
+        public function create(string $name, string $message, string $type): void
         {
+            $this->startSession();
             // remove existing message with the name
             if (isset($_SESSION[$type][$name])) {
                 unset($_SESSION[$type][$name]);
@@ -30,8 +31,9 @@
          * @param string $type 
          * @return void
          */
-        public function display_flash_message(string $name, string $type): void
+        public function show(string $name, string $type)
         {
+            $this->startSession();
             if (!isset($_SESSION[$type][$name])) {
                 return;
             }
@@ -43,7 +45,13 @@
             unset($_SESSION[$type][$name]);
 
             // display the flash message
-            echo format_flash_message($flash_message);
+            return $flash_message;
+        }
+
+        private function startSession(){
+            if(session_status() == "PHP_SESSION_DISABLED"){
+                session_start();
+            }
         }
 
     }
